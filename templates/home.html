@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fi" xmlns="http://www.w3.org/1999/xhtml" xml:lang="fi">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Login</title>
+    </head>
+    <body>
+{% if user %}
+<pre>
+{{ user|tojson }}
+</pre>
+<a href="/logout">logout</a>
+{% else %}
+<a href="/login">login</a>
+{% endif %}
+    </body>
+</html>

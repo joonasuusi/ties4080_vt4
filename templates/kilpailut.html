@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fi" xmlns="http://www.w3.org/1999/xhtml" xml:lang="fi">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Kilpailut</title>
+    </head>
+    <body>
+        <a href="/logout">Log out</a>
+        {% for k in kisanimet: %}
+        <p><a href="{{request.base_url}}/{{ k['kisanimi'] }}">{{ k['kisanimi'] }}</a></p>
+        {% endfor %}
+
+        {% for k in kisanimet: %}
+        <ul>
+            <li>{{k['kisanimi']}}</li>
+            <ul>
+                {% for s in sarjanimet: %}
+                    {% if s['kilpailu'] == k['kisanimi']: %}
+                        <li>{{ s['sarjanimi'] }}</li>
+                        <ul>
+                            {% for j in joukkueentiedot: %}
+                                {% if s['sarjanimi'] == j['sarja']: %}
+                                {% if omistaja == j['omistaja'] %}
+                                    <a href="/muokkaa_{{j['avain']}}"><li>{{ j['nimi'] }}</li></a>
+                                    {% else %}
+                                    <li>{{ j['nimi'] }}</li>
+                                {% endif %}
+                                <ul>
+                                    {% for jasen in j['jasenet']: %}
+                                    <li>{{jasen}}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </ul>
+        {% endfor %}
+    </body>
+</html>

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="fi" xmlns="http://www.w3.org/1999/xhtml" xml:lang="fi">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Sarjat</title>
+    </head>
+    <body>
+        {% for s in sarjanimet: %}
+        <p><a href="{{request.base_url}}/{{ s['sarjanimi'] }}">{{ s['sarjanimi'] }}</a></p>
+        {% endfor %}
+    </body>
+</html>

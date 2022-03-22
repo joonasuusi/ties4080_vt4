@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fi" xmlns="http://www.w3.org/1999/xhtml" xml:lang="fi">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='tyylit.css') }}"/>
+        <title>Muokkaa joukkuetta</title>
+    </head>
+    <body>
+        <a href="/kilpailut">Etusivulle</a>
+        <form action="{{request.base_url}}" method="POST">
+    {{ form.csrf_token }}
+    <fieldset>
+        <legend>Muokkaa joukkuetta</legend>
+        <p>{{form.sarjalista.label}}{{ form.sarjalista }}</p>
+        <p>{{form.joukkuenimi.label}}{{ form.joukkuenimi }}</p><span>{% for error in form.joukkuenimi.errors %} {{ error|e }} {% endfor %}{{viesti}}</span>
+        <p>{{form.jasen1.label}}{{ form.jasen1 }}</p><span>{% for error in form.jasen1.errors %} <p>{{ error|e }}</p> {% endfor %}</span>
+        <p>{{form.jasen2.label}}{{ form.jasen2 }}</p><span>{% for error in form.jasen2.errors %} <p>{{ error|e }}</p> {% endfor %}</span>
+        <p>{{form.jasen3.label}}{{ form.jasen3 }}</p><span>{% for error in form.jasen3.errors %} <p>{{ error|e }}</p> {% endfor %}</span>
+        <p>{{form.jasen4.label}}{{ form.jasen4 }}</p><span>{% for error in form.jasen4.errors %} <p>{{ error|e }}</p> {% endfor %}</span>
+        <p>{{form.jasen5.label}}{{ form.jasen5 }}</p><span>{% for error in form.jasen5.errors %} <p>{{ error|e }}</p> {% endfor %}</span>
+        <p>{{form.poistajoukkue.label}}{{ form.poistajoukkue }}</p>
+        <p><input type="submit" name="painike" value="Tallenna muutokset" id="nappi"/></p>
+    </fieldset>
+</form>
+    </body>
+</html>

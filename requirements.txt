@@ -1,0 +1,5 @@
+Flask==2.0.2
+google.cloud.datastore
+Authlib>=0.14.3
+flask_wtf_polyglot
+wtforms==2.3.3
